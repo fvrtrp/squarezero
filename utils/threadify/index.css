@@ -1,0 +1,50 @@
+.threadify {
+    display: flex;
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    width: 100%;
+
+  }
+  .x {
+    position: relative;
+    padding: 25px 10px;
+    margin-right: 75px;
+  }
+  .char {
+    position: absolute;
+    top: -50px;
+    font-size: 100px;
+    color: white;
+    animation-duration: 25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .char.main {
+    z-index: 2;
+    /* backdrop-filter: blur(1px); */
+  }
+  .char.shadow {
+    color: #92ff07;
+    z-index: 1;
+  }
+  .float {
+    animation-name: floating;
+  }
+  @keyframes floating {
+    0% {
+      transform: translate(0, 0px);
+    }
+    25% {
+      transform: translate(5px, 10px);
+    }
+    50% {
+      transform: translate(15px, 3px);
+    }
+    75% {
+      transform: translate(-8px, -7px);
+    }
+    100% {
+      transform: translate(0, -0px);
+    }
+  }

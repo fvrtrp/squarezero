@@ -27,11 +27,6 @@ export const appList = [
     link: "https://chrome.google.com/webstore/detail/ytg-youtube-thumbnail-gra/kibologgkgfknmnbnomhagdjngckkcbb",
   },
   {
-    title: "Square Zero",
-    description: "Personal Blog, powered by gatsby. Also a jekyll theme.",
-    link: "https://squarezero.github.io/",
-  },
-  {
     title: "Player of words",
     description: "practice english word by word",
     link: "https://surajk95.github.io/player-of-words/",
@@ -54,7 +49,27 @@ export const appList = [
   },
 ];
 
-export const sideList = [
+export const links = [
+  {
+    title: "Github",
+    description: "",
+    link: "https://github.com/surajk95",
+  },
+  {
+    title: "Github2",
+    description: "",
+    link: "https://github.com/fvrtrp",
+  },
+  {
+    title: "STORIES",
+    description: "Personal Blog, powered by gatsby. Also a jekyll theme.",
+    link: "https://squarezero.github.io/",
+  },
+  {
+    title: "Youtube",
+    description: "Videos, vlogs and art.",
+    link: "https://www.youtube.com/fevertrip",
+  },
   {
     title: "Goodreads",
     description: "Catch up with my books. Updated irregularly.",
@@ -64,15 +79,5 @@ export const sideList = [
     title: "Flickr",
     description: "Photos, real and virtual.",
     link: "https://www.flickr.com/photos/surajk95",
-  },
-  {
-    title: "Youtube - fevertrip",
-    description: "Videos, vlogs and art.",
-    link: "https://www.youtube.com/fevertrip",
-  },
-  {
-    title: "DeviantArt",
-    description: "Deviant. art.",
-    link: "https://www.deviantart.com/surajk95",
   },
 ];

@@ -7,7 +7,11 @@ module.exports = {
   ],
   darkMode: ["class"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'hackergreen': '#92ff07',
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 }

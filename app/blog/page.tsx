@@ -1,14 +1,17 @@
 import { allPosts } from "@/.contentlayer/generated"
 import Link from "next/link"
+import { prata, spacemono } from "../fonts"
 
-export default function Home() {
+export default function BlogList() {
   const posts = allPosts.sort((a, b) => a.date > b.date ? -1 : 1)
+
   return (
-    <div className="prose dark:prose-invert">
+    <div className="">
       {posts.map((post) => (
-        <article key={post._id}>
+        <article key={post._id} className="my-8">
+          <div className={`${spacemono.className} text-slate-500 text-xs`}>{post.date.slice(0, 10)}</div>
           <Link href={post.slug}>
-            <h2>{post.title}</h2>
+            <h2 className={`${prata.className} text-hackergreen text-3xl`}>{post.title}</h2>
           </Link>
           {post.description && <p>{post.description}</p>}
         </article>

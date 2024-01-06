@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-.prose a {
+/* .prose a {
     text-decoration: none !important;
+} */
+
+.appItem {
+    /* display: flex;
+    flex-wrap: wrap; */
+    position: relative;
+}
+.appTitle {
+    width: fit-content;
+    padding: 3px 15px;
+    text-transform: uppercase;
+    position: relative;
+}
+.appTitle:after {
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: " ";
+    background: #92ff07;
+    transition: width 1s ease;
+}
+.appItem:hover .appTitle:after {
+    width: 100%;
+}
+.appDescription {
+
+}
+.linkItem {
+
+}
+.linkTitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.linkDescription {
+    
 }

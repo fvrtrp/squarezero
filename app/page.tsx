@@ -1,32 +1,39 @@
 import Link from "next/link"
-import { appList, sideList } from './app-list'
-
-const modes = ['default', 'apps']
+import Threadify from '../utils/threadify'
+import { appList, links } from '../utils/app-list'
+import { robotomono, prata } from "./fonts"
 
 export default function Home() {
+
   return (
     <div className="prose dark:prose-invert">
-      <h1>FVRTRP</h1>
+      <Threadify text="fvrtrp" />
+      {/* <div className={`SectionTitle text-hackergreen text-3xl ${prata.className} mb-10`}>Apps</div> */}
       {
         appList.map((item, key) => {
           return (
-            <div key={key}>
-              {item.title}
-              {item.description}
-            </div>
+            <a key={key} href={item.link} target="_blank" rel="noreferrer noopener">
+              <div className="appItem m-3">
+                <span className="appTitle font-bold text-hackergreen">{item.title}</span>
+                <span className={`appDescription text-slate-50 text-sm ${robotomono.className}`}>{item.description}</span>
+              </div>
+            </a>
           )
         })
       }
-       {
-        sideList.map((item, key) => {
-          return (
-            <div key={key}>
-              {item.title}
-              {item.description}
-            </div>
-          )
-        })
-      }
+      <div className="m-20 flex justify-center">
+        {
+          links.map((item, key) => {
+            return (
+              <a key={key} href={item.link} target="_blank" rel="noreferrer noopener">
+                <div className="linkItem m-3">
+                  <span className="linkTitle font-bold bg-hackergreen hover:bg-slate-50 text-xs">{item.title}</span>
+                </div>
+              </a>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }

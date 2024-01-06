@@ -3,6 +3,7 @@ import { allPosts } from "contentlayer/generated"
 
 import { Metadata } from "next"
 import { Mdx } from "@/components/mdx-components"
+import { prata, spacemono, robotomono } from "@/app/fonts"
 
 interface PostProps {
   params: {
@@ -51,9 +52,9 @@ export default async function PostPage({ params }: PostProps) {
 
   return (
     <article className="py-6 prose dark:prose-invert">
-      <h1 className="mb-2">{post.title}</h1>
+      <h1 className={`mb-2 ${prata.className} text-hackergreen`}>{post.title}</h1>
       {post.description && (
-        <p className="text-xl mt-0 text-slate-700 dark:text-slate-200">
+        <p className={`text-xl mt-0 ${spacemono.className}`}>
           {post.description}
         </p>
       )}
