@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .prose a {
+.prose a {
     text-decoration: none !important;
-} */
+}
 
 .appItem {
     /* display: flex;
@@ -20,27 +20,44 @@
 .appTitle:after {
     position: absolute;
     width: 0;
-    height: 3px;
+    height: 100%;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
     content: " ";
     background: #92ff07;
     transition: width 1s ease;
+    z-index: -1;
+}
+.appItem:hover .appTitle{
+    color: black;
 }
 .appItem:hover .appTitle:after {
     width: 100%;
 }
-.appDescription {
-
+.navItem {
+    position: relative;
+    padding: 1px 4px;
 }
-.linkItem {
-
+.navItem:after {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: " ";
+    background: #92ff07;
+    transition: width 0.3s ease-out;
+    z-index: -1;
+}
+.navItem:hover {
+    color: black;
+}
+.navItem:hover:after {
+    width: 100%;
 }
 .linkTitle {
     text-transform: uppercase;
     letter-spacing: 2px;
-}
-.linkDescription {
-    
 }

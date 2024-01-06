@@ -7,6 +7,7 @@ export default function BlogList() {
 
   return (
     <div className="">
+            <div className={`SectionTitle text-3xl ${spacemono.className} mb-10`}>Blog</div>
       {posts.map((post) => (
         <article key={post._id} className="my-8">
           <div className={`${spacemono.className} text-slate-500 text-xs`}>{post.date.slice(0, 10)}</div>

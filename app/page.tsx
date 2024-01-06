@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Threadify from '../utils/threadify'
 import { appList, links } from '../utils/app-list'
-import { robotomono, prata } from "./fonts"
+import { robotomono } from "./fonts"
 
 export default function Home() {
 
@@ -27,7 +27,7 @@ export default function Home() {
             return (
               <a key={key} href={item.link} target="_blank" rel="noreferrer noopener">
                 <div className="linkItem m-3">
-                  <span className="linkTitle font-bold bg-hackergreen hover:bg-slate-50 text-xs">{item.title}</span>
+                  <span className="linkTitle font-bold bg-hackergreen text-slate-950 hover:bg-slate-50 text-xs">{item.title}</span>
                 </div>
               </a>
             )
