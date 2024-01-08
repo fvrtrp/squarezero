@@ -14,14 +14,14 @@ export default function Home() {
           return (
             <a key={key} href={item.link} target="_blank" rel="noreferrer noopener">
               <div className="appItem m-3">
-                <span className="appTitle font-bold text-hackergreen">{item.title}</span>
+                <span className="appTitle font-bold text-hackergreen mr-2">{item.title}</span>
                 <span className={`appDescription text-slate-50 text-sm ${robotomono.className}`}>{item.description}</span>
               </div>
             </a>
           )
         })
       }
-      <div className="m-20 flex justify-center">
+      <div className="m-20 flex flex-wrap justify-center">
         {
           links.map((item, key) => {
             return (

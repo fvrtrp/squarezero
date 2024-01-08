@@ -1,15 +1,27 @@
 .threadify {
     display: flex;
+    justify-content: center;
     position: relative;
     height: 150px;
-    overflow: hidden;
     width: 100%;
-
+  }
+  @media only screen and (max-width: 700px) {
+    .threadify {
+      height: 100px;
+    }
+    .threadify .x {
+      margin-right: 30px;
+    }
+    .threadify .x .char {
+      font-size: 70px;
+    }
   }
   .x {
     position: relative;
     padding: 25px 10px;
-    margin-right: 75px;
+    margin-right: 50px;
+    cursor: pointer;
+    overflow: visible;
   }
   .char {
     position: absolute;
@@ -19,6 +31,17 @@
     animation-duration: 25s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+    transition: filter 0.3s ease, opacity 0.1s ease;
+  }
+  .x:hover .char.main {
+    opacity: 0 !important;
+  }
+  .x:hover .char.shadow {
+    animation-duration: 1s;
+    transition: filter 2s ease, opacity 0.1s ease;
+  }
+  .x:hover .char.shadow {
+    filter: blur(15px);
   }
   .char.main {
     z-index: 2;

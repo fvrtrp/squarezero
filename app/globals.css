@@ -13,7 +13,7 @@
 }
 .appTitle {
     width: fit-content;
-    padding: 3px 15px;
+    padding: 3px 0px 3px 0;
     text-transform: uppercase;
     position: relative;
 }
@@ -26,7 +26,7 @@
     transform: translate(-50%, 0);
     content: " ";
     background: #92ff07;
-    transition: width 1s ease;
+    transition: width 0.3s ease;
     z-index: -1;
 }
 .appItem:hover .appTitle{

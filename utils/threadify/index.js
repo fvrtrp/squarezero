@@ -40,5 +40,5 @@ export default function Threadify(props) {
     }
   }
 
-  return <div className="threadify"></div>;
+  return <div className="threadify my-8"></div>;
 }
