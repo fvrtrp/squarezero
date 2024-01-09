@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import './index.css'
 
 export default function Threadify(props) {
-  const { text = "fvrtrp", multiplier = 10 } = props;
+  const { text = "fvrtrp", multiplier = 10, speed=25 } = props;
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export default function Threadify(props) {
         zDiv.className = `char x-${i} z-${j} float-${j} ${
           j > 0 ? "shadow" : "main"
         }`;
+        zDiv.style.animationDuration = `${speed}s`
         // zDiv.style.filter = `blur(${j * 5}px)`;
         const opacityMultiplier = parseFloat(`0.${j}`);
         zDiv.style.opacity = `${1 - opacityMultiplier}`;
@@ -33,7 +34,7 @@ export default function Threadify(props) {
             zDiv.classList.add("float");
           },
           //j * 1000 + i * 1000
-          Math.floor(Math.random() * 7000 + j * 500)
+          Math.floor(Math.random() * 280*speed + j * 500)
         );
       }
       parent.appendChild(xDiv);

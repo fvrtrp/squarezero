@@ -4,10 +4,12 @@
     position: relative;
     height: 150px;
     width: 100%;
+    user-select: none;
   }
   @media only screen and (max-width: 700px) {
     .threadify {
       height: 100px;
+      margin-top: 3rem;
     }
     .threadify .x {
       margin-right: 30px;
@@ -22,22 +24,30 @@
     margin-right: 50px;
     cursor: pointer;
     overflow: visible;
+    user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
   .char {
     position: absolute;
     top: -50px;
     font-size: 100px;
     color: white;
-    animation-duration: 25s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     transition: filter 0.3s ease, opacity 0.1s ease;
+    user-select: none;
   }
   .x:hover .char.main {
     opacity: 0 !important;
   }
   .x:hover .char.shadow {
-    animation-duration: 1s;
+    animation-duration: 1s !important;
     transition: filter 2s ease, opacity 0.1s ease;
   }
   .x:hover .char.shadow {

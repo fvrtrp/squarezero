@@ -86,3 +86,30 @@ export const links = [
     link: "https://www.behance.net/surajk95",
   },
 ];
+
+export const externalLinks = [
+  {
+    link: "/sesh",
+    out: "https://fvrtrp.github.io/sesh/",
+  },
+  {
+    link: "/dash",
+    out: "https://chrome.google.com/webstore/detail/dash-transient-todo-app/ljheneifbckpafceajjbbbimiknkaeib",
+  },
+  {
+    link: "/hunt-empyra",
+    out: "https://fvrtrp.github.io/hunt-empyra/",
+  },
+  {
+    link: "/ytg",
+    out: "https://chrome.google.com/webstore/detail/ytg-youtube-thumbnail-gra/kibologgkgfknmnbnomhagdjngckkcbb",
+  },
+  {
+    link: "/ycg",
+    out: "https://chrome.google.com/webstore/detail/youtube-channel-grabber/lniheepcplcpdffbmfpcbbbdceakeebp",
+  },
+  {
+    link: "/dot",
+    out: "https://fvrtrp.github.io/dot/",
+  },
+];

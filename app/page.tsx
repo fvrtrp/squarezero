@@ -1,4 +1,3 @@
-import Link from "next/link"
 import Threadify from '../utils/threadify'
 import { appList, links } from '../utils/app-list'
 import { robotomono } from "./fonts"

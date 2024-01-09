@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
   title: "Fever trip",
-  description: "Fever trip / FVRTRP - official website - surajk95 - suraj kumar kukati",
+  description: "Fever trip / fvrtrp - official website - surajk95 - suraj kumar kukati",
 }
 
 interface RootLayoutProps {
@@ -25,7 +25,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div className="flex items-center justify-between">
                 <nav className="ml-auto text-sm font-medium space-x-6 uppercase">
                   <Link href="/" className="navItem">Home</Link>
-                  {/* <Link href="/about">About</Link> */}
                   <Link href="/blog" className="navItem">Blog</Link>
                 </nav>
               </div>
