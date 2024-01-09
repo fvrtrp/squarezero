@@ -16,13 +16,13 @@ module.exports = {
           css: {
             p: {
               color: '#ccc',
-              '&:hover': {
-                // color: '#2c5282',
-              },
             },
             li: {
               color: '#666aaa',
             },
+            strong: {
+              color: '#92ff07',
+            }
           },
         },
       },
