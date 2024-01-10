@@ -1,13 +1,11 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import './index.css'
 
 export default function Threadify(props) {
   const { text = "fvrtrp", multiplier = 10, speed=25 } = props;
-  const [init, setInit] = useState(false);
 
   useEffect(() => {
-    setInit(true);
     threadify(text);
   }, []);
 
@@ -41,5 +39,5 @@ export default function Threadify(props) {
     }
   }
 
-  return <div className="threadify my-8"></div>;
+  return <div className="threadify my-8"><h1>{text}</h1></div>;
 }
