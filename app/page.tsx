@@ -1,57 +1,33 @@
 import type { Metadata } from 'next'
 import Threadify from "../utils/threadify";
-import { appList, links } from "../utils/app-list";
-import { robotomono } from "./fonts";
+import { allPosts } from "@/.contentlayer/generated";
+import Link from "next/link";
+import { prata, spacemono } from "./fonts";
 
 export const metadata: Metadata = {
-  title: 'Fever trip - FVRTRP',
-  description: "Take a look at my portfolio",
+  title: 'Blog - Square zero',
+  description: "Fiction, ballads, blog",
 }
 
 export default function Home() {
+  const posts = allPosts.sort((a, b) => (a.date > b.date ? -1 : 1));
+
   return (
     <div className="prose dark:prose-invert">
-      <Threadify text="fvrtrp" />
-      {/* <div className={`SectionTitle text-hackergreen text-3xl ${prata.className} mb-10`}>Apps</div> */}
-      {appList.map((item, key) => {
-        return (
-          <a
-            key={key}
-            href={item.link}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <div className="appItem m-3">
-              <span className="appTitle font-bold text-hackergreen mr-2">
-                {item.title}
-              </span>
-              <span
-                className={`appDescription text-slate-50 text-sm ${robotomono.className}`}
-              >
-                {item.description}
-              </span>
-            </div>
-          </a>
-        );
-      })}
-      <div className="m-20 flex flex-wrap justify-center">
-        {links.map((item, key) => {
-          return (
-            <a
-              key={key}
-              href={item.link}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <div className="linkItem m-3">
-                <span className="linkTitle font-bold bg-hackergreen text-slate-950 hover:bg-slate-50 text-xs">
-                  {item.title}
-                </span>
-              </div>
-            </a>
-          );
-        })}
-      </div>
+      <header className="text-6xl text-bleedred">Square Zero</header>
+      {posts.map((post) => (
+        <article key={post._id} className="my-8">
+          <div className={`${spacemono.className} text-slate-500 text-xs`}>
+            {post.date.slice(0, 10)}
+          </div>
+          <Link href={post.slug}>
+            <h2 className={`${prata.className} text-bleedred text-3xl`}>
+              {post.title}
+            </h2>
+          </Link>
+          {post.description && <p>{post.description}</p>}
+        </article>
+      ))}
     </div>
   );
 }

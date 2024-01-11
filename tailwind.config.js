@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'hackergreen': '#92ff07',
+        'bleedred': 'red',
       },
       typography: {
         DEFAULT: {
@@ -21,7 +21,7 @@ module.exports = {
               color: '#666aaa',
             },
             strong: {
-              color: '#92ff07',
+              color: 'red',
             }
           },
         },

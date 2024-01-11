@@ -5,8 +5,8 @@ import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
-  title: "Fever trip",
-  description: "Fever trip / fvrtrp - official website - surajk95 - suraj kumar kukati",
+  title: "Square zero",
+  description: "Fiction, ballads, blog",
 }
 
 interface RootLayoutProps {
@@ -21,14 +21,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="max-w-2xl mx-auto py-10 px-4">
-            <header>
-              <div className="flex items-center justify-between">
-                <nav className="ml-auto text-sm font-medium space-x-6 uppercase">
-                  <Link href="/" className="navItem">Home</Link>
-                  <Link href="/blog" className="navItem">Blog</Link>
-                </nav>
-              </div>
-            </header>
             <main>{children}</main>
           </div>
           </ThemeProvider>

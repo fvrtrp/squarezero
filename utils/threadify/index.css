@@ -1,83 +1,83 @@
 .threadify {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    height: 150px;
-    width: 100%;
-    user-select: none;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 150px;
+  width: 100%;
+  user-select: none;
+}
+@media only screen and (max-width: 700px) {
+  .threadify {
+    height: 100px;
+    margin-top: 3rem;
   }
-  @media only screen and (max-width: 700px) {
-    .threadify {
-      height: 100px;
-      margin-top: 3rem;
-    }
-    .threadify .x {
-      margin-right: 30px;
-    }
-    .threadify .x .char {
-      font-size: 70px;
-    }
+  .threadify .x {
+    margin-right: 30px;
   }
-  .x {
-    position: relative;
-    padding: 25px 10px;
-    margin-right: 50px;
-    cursor: pointer;
-    overflow: visible;
-    user-select: none;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
+  .threadify .x .char {
+    font-size: 70px;
   }
-  .char {
-    position: absolute;
-    top: -50px;
-    font-size: 100px;
-    color: white;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    transition: filter 0.3s ease, opacity 0.1s ease;
-    user-select: none;
+}
+.x {
+  position: relative;
+  padding: 25px 10px;
+  margin-right: 50px;
+  cursor: pointer;
+  overflow: visible;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.char {
+  position: absolute;
+  top: -50px;
+  font-size: 100px;
+  color: white;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transition: filter 0.3s ease, opacity 0.1s ease;
+  user-select: none;
+}
+.x:hover .char.main {
+  opacity: 0 !important;
+}
+.x:hover .char.shadow {
+  animation-duration: 1s !important;
+  transition: filter 2s ease, opacity 0.1s ease;
+}
+.x:hover .char.shadow {
+  filter: blur(15px);
+}
+.char.main {
+  z-index: 2;
+  /* backdrop-filter: blur(1px); */
+}
+.char.shadow {
+  color: red;
+  z-index: 1;
+}
+.float {
+  animation-name: floating;
+}
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
   }
-  .x:hover .char.main {
-    opacity: 0 !important;
+  25% {
+    transform: translate(5px, 10px);
   }
-  .x:hover .char.shadow {
-    animation-duration: 1s !important;
-    transition: filter 2s ease, opacity 0.1s ease;
+  50% {
+    transform: translate(15px, 3px);
   }
-  .x:hover .char.shadow {
-    filter: blur(15px);
+  75% {
+    transform: translate(-8px, -7px);
   }
-  .char.main {
-    z-index: 2;
-    /* backdrop-filter: blur(1px); */
+  100% {
+    transform: translate(0, -0px);
   }
-  .char.shadow {
-    color: #92ff07;
-    z-index: 1;
-  }
-  .float {
-    animation-name: floating;
-  }
-  @keyframes floating {
-    0% {
-      transform: translate(0, 0px);
-    }
-    25% {
-      transform: translate(5px, 10px);
-    }
-    50% {
-      transform: translate(15px, 3px);
-    }
-    75% {
-      transform: translate(-8px, -7px);
-    }
-    100% {
-      transform: translate(0, -0px);
-    }
-  }
+}

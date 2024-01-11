@@ -52,12 +52,12 @@ export default async function PostPage({ params }: PostProps) {
 
   return (
     <article
-      className={`py-6 prose prose-headings:text-hackergreen prose-h1:text-xl prose-h1:font-normal ${robotomono.className} prose-a:text-hackergreen`}
+      className={`py-6 prose prose-headings:text-bleedred prose-h1:text-xl prose-h1:font-normal ${robotomono.className} prose-a:text-bleedred`}
     >
       <div className={`${spacemono.className} text-slate-500 text-xs`}>
         {post.date.slice(0, 10)}
       </div>
-      <h2 className={`mb-2 mt-1 ${prata.className} text-hackergreen text-3xl`}>
+      <h2 className={`mb-2 mt-1 ${prata.className} text-bleedred text-3xl`}>
         {post.title}
       </h2>
       {post.description && (

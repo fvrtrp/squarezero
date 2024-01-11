@@ -3,61 +3,61 @@
 @tailwind utilities;
 
 .prose a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .appItem {
-    /* display: flex;
+  /* display: flex;
     flex-wrap: wrap; */
-    position: relative;
+  position: relative;
 }
 .appTitle {
-    width: fit-content;
-    padding: 3px 0px 3px 0;
-    text-transform: uppercase;
-    position: relative;
+  width: fit-content;
+  padding: 3px 0px 3px 0;
+  text-transform: uppercase;
+  position: relative;
 }
 .appTitle:after {
-    position: absolute;
-    width: 0;
-    height: 100%;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    content: " ";
-    background: #92ff07;
-    transition: width 0.3s ease;
-    z-index: -1;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  content: " ";
+  background: red;
+  transition: width 0.3s ease;
+  z-index: -1;
 }
-.appItem:hover .appTitle{
-    color: black;
+.appItem:hover .appTitle {
+  color: black;
 }
 .appItem:hover .appTitle:after {
-    width: 100%;
+  width: 100%;
 }
 .navItem {
-    position: relative;
-    padding: 1px 4px;
+  position: relative;
+  padding: 1px 4px;
 }
 .navItem:after {
-    position: absolute;
-    width: 0;
-    height: 100%;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    content: " ";
-    background: #92ff07;
-    transition: width 0.3s ease-out;
-    z-index: -1;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  content: " ";
+  background: red;
+  transition: width 0.3s ease-out;
+  z-index: -1;
 }
 .navItem:hover {
-    color: black;
+  color: black;
 }
 .navItem:hover:after {
-    width: 100%;
+  width: 100%;
 }
 .linkTitle {
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
