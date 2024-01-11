@@ -14,6 +14,7 @@ export default function Home() {
 
   return (
     <div className="prose dark:prose-invert">
+      <Threadify text={'◼'} color="red" />
       <header className="text-6xl text-bleedred">Square Zero</header>
       {posts.map((post) => (
         <article key={post._id} className="my-8">

@@ -37,7 +37,7 @@
   position: absolute;
   top: -50px;
   font-size: 100px;
-  color: white;
+  color: red;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   transition: filter 0.3s ease, opacity 0.1s ease;
