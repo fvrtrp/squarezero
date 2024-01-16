@@ -6,18 +6,6 @@
   width: 100%;
   user-select: none;
 }
-@media only screen and (max-width: 700px) {
-  .threadify {
-    height: 100px;
-    margin-top: 3rem;
-  }
-  .threadify .x {
-    margin-right: 30px;
-  }
-  .threadify .x .char {
-    font-size: 70px;
-  }
-}
 .x {
   position: relative;
   padding: 25px 10px;
@@ -35,24 +23,24 @@
 }
 .char {
   position: absolute;
-  top: -50px;
-  font-size: 100px;
+  top: 0;
+  font-size: 50px;
   color: red;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   transition: filter 0.3s ease, opacity 0.1s ease;
   user-select: none;
+  transform-origin: center;
 }
-.x:hover .char.main {
+/* .x:hover .char.main {
   opacity: 0 !important;
-}
-.x:hover .char.shadow {
-  animation-duration: 1s !important;
-  transition: filter 2s ease, opacity 0.1s ease;
-}
-.x:hover .char.shadow {
+} */
+/* .x:hover .char {
+  animation-duration: 8s !important;
+} */
+/* .x:hover .char.shadow {
   filter: blur(15px);
-}
+} */
 .char.main {
   z-index: 2;
   /* backdrop-filter: blur(1px); */
@@ -66,18 +54,18 @@
 }
 @keyframes floating {
   0% {
-    transform: translate(0, 0px);
+    transform: rotate(0deg);
   }
   25% {
-    transform: translate(5px, 10px);
+    transform: rotate(90deg);
   }
   50% {
-    transform: translate(15px, 3px);
+    transform: rotate(180deg);
   }
   75% {
-    transform: translate(-8px, -7px);
+    transform: rotate(270deg);
   }
   100% {
-    transform: translate(0, -0px);
+    transform: rotate(360deg);
   }
 }

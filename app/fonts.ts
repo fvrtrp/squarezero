@@ -1,16 +1,11 @@
-import { Space_Mono, Roboto_Mono, Prata } from "next/font/google";
+import { Cutive_Mono, Abril_Fatface, Roboto_Mono } from "next/font/google";
 
-export const spacemono = Space_Mono({
-  weight: ["400", "700"],
+export const bodyfont = Roboto_Mono({
+  weight: ["200", "400"],
   subsets: ["latin"],
   display: "swap",
 });
-export const robotomono = Roboto_Mono({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-});
-export const prata = Prata({
+export const headingfont = Abril_Fatface({
   weight: ["400"],
   subsets: ["latin"],
   display: "swap",

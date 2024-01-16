@@ -15,7 +15,8 @@ module.exports = {
         DEFAULT: {
           css: {
             p: {
-              color: '#ccc',
+              color: '#eee',
+              whiteSpace: 'break-spaces',
             },
             li: {
               color: '#666aaa',

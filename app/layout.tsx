@@ -1,8 +1,9 @@
 import Link from "next/link"
 import "./globals.css"
-import { spacemono } from "./fonts"
+import { bodyfont, headingfont } from "./fonts"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/theme-provider"
+import Threadify from 'utils/threadify'
 
 export const metadata = {
   title: "Square zero",
@@ -17,10 +18,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body
-        className={`antialiased min-h-screen bg-slate-950 text-slate-50 ${spacemono.className}`}
+        className={`antialiased min-h-screen bg-black text-slate-50 ${bodyfont.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="max-w-2xl mx-auto py-10 px-4">
+          <Link href="/" title="Go home"><div id="sqz">
+          <Threadify text={'□'} color="red" speed={100} />
+          </div>
+          <header id="siteTitle" className={`text-xl text-bleedred ${headingfont.className}`}>Square Zero</header>
+          </Link>
+          <div className="max-w-full mx-auto py-10 px-8 sm:px-32">
             <main>{children}</main>
           </div>
           </ThemeProvider>

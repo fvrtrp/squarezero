@@ -3,7 +3,9 @@ import { allPosts } from "contentlayer/generated";
 
 import { Metadata } from "next";
 import { Mdx } from "@/components/mdx-components";
-import { prata, spacemono, robotomono } from "@/app/fonts";
+import { headingfont, bodyfont } from "@/app/fonts";
+import Share from '@/utils/share';
+import BackgroundContainer from "@/app/background-container";
 
 interface PostProps {
   params: {
@@ -52,21 +54,24 @@ export default async function PostPage({ params }: PostProps) {
 
   return (
     <article
-      className={`py-6 prose prose-headings:text-bleedred prose-h1:text-xl prose-h1:font-normal ${robotomono.className} prose-a:text-bleedred`}
+      className={`max-w-4xl mt-20 pb-60 prose prose-headings:text-bleedred prose-h1:text-xl prose-h1:font-normal prose-a:text-bleedred prose-p:text-base prose-p:font-extralight`}
     >
-      <div className={`${spacemono.className} text-slate-500 text-xs`}>
+      <div className={`${bodyfont.className} text-slate-500 text-xs`}>
         {post.date.slice(0, 10)}
       </div>
-      <h2 className={`mb-2 mt-1 ${prata.className} text-bleedred text-3xl`}>
+      <div className="flex items-center">
+      <h2 className={`mb-2 mt-1 mr-10 ${headingfont.className} text-bleedred text-5xl`}>
         {post.title}
       </h2>
+      <Share />
+      </div>
       {post.description && (
-        <p className={`text-xl mt-0 ${spacemono.className}`}>
+        <div className={`text-2xl mt-0 ${bodyfont.className} text-white`}>
           {post.description}
-        </p>
+        </div>
       )}
-      <hr className="my-4" />
       <Mdx code={post.body.code} />
+      <BackgroundContainer image={post.background}/>
     </article>
   );
 }
