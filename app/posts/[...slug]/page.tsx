@@ -35,7 +35,7 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.description,
+    description: post.description || `Read ${post.title} on square zero`,
   };
 }
 
@@ -60,18 +60,18 @@ export default async function PostPage({ params }: PostProps) {
         {post.date.slice(0, 10)}
       </div>
       <div className="flex items-center">
-      <h2 className={`mb-2 mt-1 mr-10 ${headingfont.className} text-bleedred text-5xl`}>
-        {post.title}
-      </h2>
-      <Share />
+        <h2 className={`mb-2 mt-1 mr-10 ${headingfont.className} text-bleedred text-5xl`}>
+          {post.title}
+        </h2>
+        <Share />
       </div>
       {post.description && (
-        <div className={`text-2xl mt-0 ${bodyfont.className} text-white`}>
+        <h3 className={`text-2xl mt-0 ${bodyfont.className} text-white`}>
           {post.description}
-        </div>
+        </h3>
       )}
       <Mdx code={post.body.code} />
-      <BackgroundContainer image={post.background}/>
+      <BackgroundContainer image={post.background} />
     </article>
   );
 }
