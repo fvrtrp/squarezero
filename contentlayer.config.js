@@ -44,9 +44,16 @@ export const Post = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
+    category: {
+      type: "string",
+    },
+    archived: {
+      type: "boolean",
+      default: false,
+    },
     background: {
       type: "string",
-    }
+    },
   },
   computedFields,
 }))

@@ -1,28 +1,26 @@
-import { allPosts } from "@/.contentlayer/generated";
-import Link from "next/link";
-import { headingfont, bodyfont } from "./fonts";
-import BackgroundContainer from './background-container'
+import { allPosts } from "@/.contentlayer/generated"
+import BackgroundContainer from "./background-container"
+import HomePosts from "@/components/home-posts"
+import { getAllArtwork } from "@/lib/artwork"
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) => (a.date > b.date ? -1 : 1));
+  const artwork = getAllArtwork()
+  const posts = allPosts
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
+    .map((post) => ({
+      _id: post._id,
+      title: post.title,
+      date: post.date,
+      slug: post.slug,
+      category: post.category ?? null,
+      archived: Boolean(post.archived),
+      artwork: artwork[post.slugAsParams] ?? null,
+    }))
 
   return (
-    <div className="mt-20">
-      {posts.map((post) => (
-        <article key={post._id} className="py-5 articlePreview">
-          <div className="articleSeparator articleAfter"></div>
-          <div className={`text-slate-500 text-xs`}>
-            {post.date.slice(0, 10)}
-          </div>
-          <Link href={post.slug}>
-            <h2 className={`${headingfont.className} text-bleedred text-3xl`}>
-              {post.title}
-            </h2>
-            {post.description && <h3>{post.description}</h3>}
-          </Link>
-        </article>
-      ))}
+    <>
+      <HomePosts posts={posts} />
       <BackgroundContainer />
-    </div>
-  );
+    </>
+  )
 }
