@@ -1,12 +1,25 @@
-import { Cutive_Mono, Abril_Fatface, Roboto_Mono } from "next/font/google";
+import localFont from "next/font/local"
 
-export const bodyfont = Roboto_Mono({
-  weight: ["200", "400"],
-  subsets: ["latin"],
+export const bodyfont = localFont({
+  src: [
+    {
+      path: "../fonts/roboto-mono-latin-200-normal.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../fonts/roboto-mono-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   display: "swap",
-});
-export const headingfont = Abril_Fatface({
-  weight: ["400"],
-  subsets: ["latin"],
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+})
+
+export const headingfont = localFont({
+  src: "../fonts/abril-fatface-latin-400-normal.woff2",
+  weight: "400",
   display: "swap",
-});
+  fallback: ["Palatino", "Georgia", "serif"],
+})
