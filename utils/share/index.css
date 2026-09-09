@@ -3,12 +3,22 @@
     display: inline-block;
     margin-top: 10px;
     cursor: pointer;
+    color: #64748b;
     @media (max-width: 767px) {
         margin-top: 15px;
-        img {
+        .shareIcon {
             width: 25px;
         }
     }
+  }
+  .shareIcon {
+    display: block;
+    color: inherit;
+    transition: color 0.25s ease;
+  }
+  .tooltipcontainer:hover .shareIcon,
+  .tooltipcontainer:focus-within .shareIcon {
+    color: red;
   }
   .tooltipcontainer .tooltiptext {
     visibility: hidden;

@@ -21,29 +21,30 @@
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+@property --spin {
+  syntax: "<time>";
+  inherits: true;
+  initial-value: 25s;
+}
+@property --layer {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
 .char {
   position: absolute;
   top: 0;
   font-size: 50px;
   color: red;
+  animation-duration: var(--spin);
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   transition: filter 0.3s ease, opacity 0.1s ease;
   user-select: none;
   transform-origin: center;
 }
-/* .x:hover .char.main {
-  opacity: 0 !important;
-} */
-/* .x:hover .char {
-  animation-duration: 8s !important;
-} */
-/* .x:hover .char.shadow {
-  filter: blur(15px);
-} */
 .char.main {
   z-index: 2;
-  /* backdrop-filter: blur(1px); */
 }
 .char.shadow {
   color: red;

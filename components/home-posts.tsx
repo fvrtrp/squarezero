@@ -14,7 +14,7 @@ export type HomePost = {
   slug: string
   category?: string | null
   archived: boolean
-  artwork: Artwork | null
+  artwork: Artwork
 }
 
 type ViewMode = "grid" | "list"
@@ -136,24 +136,21 @@ export default function HomePosts({ posts }: { posts: HomePost[] }) {
       {view === "grid" ? (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {visiblePosts.map((post) => (
-            <article key={post._id}>
+            <article key={post._id} className="homeCard">
               <Link href={post.slug} className="block group">
-                <div className="aspect-video overflow-hidden rounded-[10px] bg-zinc-900">
-                  {post.artwork && (
-                    <ProgressiveImage
-                      src={post.artwork.src}
-                      src2x={post.artwork.src2x}
-                      alt=""
-                      className="h-full w-full object-cover"
-                    />
-                  )}
+                <div className="homeCardMedia aspect-video overflow-hidden rounded-[10px] bg-zinc-900">
+                  <ProgressiveImage
+                    src={post.artwork.src}
+                    src2x={post.artwork.src2x}
+                    alt={post.title}
+                  />
                 </div>
                 <h2
                   className={`${headingfont.className} text-bleedred text-base mt-2 mb-0 leading-tight`}
                 >
                   {post.title}
                 </h2>
-                <time className="block text-[10px] text-slate-500 mt-1">
+                <time dateTime={post.date} className="block text-[10px] text-slate-500 mt-1">
                   {post.date.slice(0, 10)}
                 </time>
               </Link>
@@ -164,7 +161,7 @@ export default function HomePosts({ posts }: { posts: HomePost[] }) {
         visiblePosts.map((post) => (
           <article key={post._id} className="py-5 articlePreview">
             <div className="articleSeparator articleAfter"></div>
-            <div className="text-slate-500 text-xs">{post.date.slice(0, 10)}</div>
+            <time dateTime={post.date} className="text-slate-500 text-xs">{post.date.slice(0, 10)}</time>
             <Link href={post.slug}>
               <h2 className={`${headingfont.className} text-bleedred text-3xl`}>
                 {post.title}

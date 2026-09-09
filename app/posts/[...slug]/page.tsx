@@ -4,10 +4,12 @@ import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { Mdx } from "@/components/mdx-components";
 import { headingfont, bodyfont } from "@/app/fonts";
-import Share from '@/utils/share';
+import Share from "@/utils/share";
 import BackgroundContainer from "@/app/background-container";
-import ProgressiveImage from "@/components/progressive-image";
-import { getArtworkForSlug } from "@/lib/artwork";
+import PostArtwork from "@/components/post-artwork";
+import JsonLd from "@/components/json-ld";
+import { getArtworkForPost } from "@/lib/artwork";
+import { SITE_AUTHOR, SITE_AUTHOR_AKA, SITE_AUTHOR_JSONLD, SITE_NAME, absoluteUrl, postDescription } from "@/lib/site";
 
 interface PostProps {
   params: {
@@ -35,9 +37,36 @@ export async function generateMetadata({
     return {};
   }
 
+  const artwork = getArtworkForPost(post.slugAsParams);
+  const description = postDescription(post);
+  const url = absoluteUrl(post.slug);
+  const image = artwork ? absoluteUrl(artwork.src) : undefined;
+
   return {
     title: post.title,
-    description: post.description || `Read ${post.title} on square zero`,
+    description,
+    alternates: {
+      canonical: url,
+      types: {
+        "application/rss+xml": absoluteUrl("/feed.xml"),
+      },
+    },
+    openGraph: {
+      type: "article",
+      url,
+      title: post.title,
+      description,
+      siteName: SITE_NAME,
+      publishedTime: new Date(post.date).toISOString(),
+      authors: [SITE_AUTHOR, SITE_AUTHOR_AKA],
+      images: image ? [image] : [],
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title: post.title,
+      description,
+      images: image ? [image] : [],
+    },
   };
 }
 
@@ -54,32 +83,45 @@ export default async function PostPage({ params }: PostProps) {
     notFound();
   }
 
-  const artwork = getArtworkForSlug(post.slugAsParams);
+  const artwork = getArtworkForPost(post.slugAsParams);
+  const description = postDescription(post);
+  const published = post.date.slice(0, 10);
 
   return (
     <>
-      <article
-        className={`max-w-4xl mt-20 pb-60 prose prose-headings:text-bleedred prose-h1:text-xl prose-h1:font-normal prose-a:text-bleedred prose-p:text-base prose-p:font-extralight`}
-      >
-        <div className={`${bodyfont.className} text-slate-500 text-xs`}>
-          {post.date.slice(0, 10)}
-        </div>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description,
+          datePublished: post.date,
+          author: SITE_AUTHOR_JSONLD,
+          mainEntityOfPage: absoluteUrl(post.slug),
+          image: absoluteUrl(artwork.src),
+        }}
+      />
+      <article className="max-w-4xl mt-20 pb-60">
+        <time
+          dateTime={post.date}
+          className={`${bodyfont.className} text-slate-500 text-xs`}
+        >
+          {published}
+        </time>
         <div className="flex items-center">
-          <h2 className={`mb-2 mt-1 mr-10 ${headingfont.className} text-bleedred text-5xl`}>
+          <h1 className={`mb-2 mt-1 mr-10 ${headingfont.className} text-bleedred text-5xl`}>
             {post.title}
-          </h2>
+          </h1>
           <Share />
         </div>
-        {artwork && (
-          <div className="postArtwork not-prose">
-            <ProgressiveImage
-              src={artwork.src}
-              src2x={artwork.src2x}
-              alt=""
-            />
-          </div>
-        )}
-        <Mdx code={post.body.code} />
+        <PostArtwork
+          src={artwork.src}
+          src2x={artwork.src2x}
+          alt={post.title}
+        />
+        <div className="prose prose-headings:text-bleedred prose-h1:text-xl prose-h1:font-normal prose-a:text-bleedred prose-p:text-base prose-p:font-extralight">
+          <Mdx code={post.body.code} />
+        </div>
       </article>
       <BackgroundContainer artwork={artwork} />
     </>

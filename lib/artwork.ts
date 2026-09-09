@@ -1,29 +1,40 @@
 import fs from "fs"
 import path from "path"
-import type { Artwork } from "./artwork-shared"
+import { isFallbackSlug, pickFallbackArtwork, type Artwork } from "./artwork-shared"
 
 export type { Artwork } from "./artwork-shared"
-export { DEFAULT_BACKGROUND } from "./artwork-shared"
+export {
+  FALLBACK_ARTWORK,
+  isFallbackSlug,
+  pickFallbackArtwork,
+  pickRandomFallbackArtwork,
+} from "./artwork-shared"
 
-const BACKGROUNDS_DIR = path.join(process.cwd(), "public/backgrounds")
+const ARTWORK_DIR = path.join(process.cwd(), "public/sqz")
 
 function publicUrl(filename: string) {
-  return `/backgrounds/${filename}`
+  return `/sqz/${filename}`
 }
 
+let artworkCache: Record<string, Artwork> | null = null
+
 export function getAllArtwork(): Record<string, Artwork> {
+  if (artworkCache && process.env.NODE_ENV === "production") return artworkCache
+
   const artwork: Record<string, Artwork> = {}
 
-  if (!fs.existsSync(BACKGROUNDS_DIR)) {
+  if (!fs.existsSync(ARTWORK_DIR)) {
+    artworkCache = artwork
     return artwork
   }
 
-  const files = fs.readdirSync(BACKGROUNDS_DIR)
+  const files = fs.readdirSync(ARTWORK_DIR)
 
   for (const file of files) {
-    const match = file.match(/^(.+?)-2x\.(jpe?g|png|webp)$/i)
+    const match = file.match(/^(.+?)_2x\.(jpe?g|png|webp)$/i)
     if (!match) continue
     const slug = match[1]
+    if (isFallbackSlug(slug)) continue
     const ext = match[2]
     const oneX = files.find(
       (candidate) => candidate.toLowerCase() === `${slug}.${ext}`.toLowerCase()
@@ -39,13 +50,18 @@ export function getAllArtwork(): Record<string, Artwork> {
     const match = file.match(/^(.+?)\.(jpe?g|png|webp)$/i)
     if (!match) continue
     const slug = match[1]
-    if (slug.endsWith("-2x") || artwork[slug]) continue
+    if (slug.toLowerCase().endsWith("_2x") || isFallbackSlug(slug) || artwork[slug]) continue
     artwork[slug] = { src: publicUrl(file) }
   }
 
+  artworkCache = artwork
   return artwork
 }
 
 export function getArtworkForSlug(slug: string): Artwork | null {
   return getAllArtwork()[slug] ?? null
+}
+
+export function getArtworkForPost(slug: string): Artwork {
+  return getArtworkForSlug(slug) ?? pickFallbackArtwork(slug)
 }
