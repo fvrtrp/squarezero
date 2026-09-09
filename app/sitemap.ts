@@ -6,8 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const posts = allPosts.map((post) => ({
     url: absoluteUrl(post.slug),
     lastModified: post.date,
-    changeFrequency: "monthly" as const,
-    priority: post.archived ? 0.4 : 0.7,
   }))
 
   const latest = allPosts.reduce((newest, post) => {
@@ -18,8 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: SITE_URL,
       lastModified: latest,
-      changeFrequency: "weekly",
-      priority: 1,
     },
     ...posts,
   ]
